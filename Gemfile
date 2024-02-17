@@ -60,6 +60,8 @@ group :development, :test do
   gem "factory_bot_rails"
 
   gem "faker"
+
+  gem "solargraph"
 end
 
 group :development do
