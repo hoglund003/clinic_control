@@ -8,12 +8,20 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
+</head>
+
+
   </head>
 
   <body>
-    <div class="mx-36 my-24">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>

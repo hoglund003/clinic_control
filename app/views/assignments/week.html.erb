@@ -1,0 +1,43 @@
+<div class="flex gap-5 m-10">
+    <% @week_range.each do |day| %>
+        <div class="border-r-2 px-5">
+            <span class="text-xl">
+                <%= day_name day %>
+            </span>
+            <div class="flex flex-col gap-4 mx-1 my-8">
+                <% @departments.each do |department| %>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-baseline justify-between gap-2 bg-primary px-2 py-1 rounded-md">
+                            <span class="text-secondary-content text-sm">
+                                Depatrment
+                            </span>
+                            <h1 class="text-xl text-secondary-content">
+                                <%= department.name %>
+                            </h1>
+                        </div>
+                        <div class="flex flex-col ml-3">
+                            <% department.rooms.each do |room| %>
+                                <div class="flex items-baseline justify-between gap-2 bg-secondary px-2 rounded-md">
+                                    <span class="text-secondary-content text-sm">
+                                        Room
+                                    </span>
+                                    <h2 class="text-xl text-secondary-content">
+                                        <%= room.name %>
+                                    </h2>
+                                </div>
+                                <div class="flex flex-col ml-3 gap-2 mb-2">
+                                    <% assignments_at_date(room.assignments, day).each do |ass| %>
+                                        <span class="rounded-md px-2 hover:bg-slate-300 hover:cursor-grab">
+                                            <%= ass.user.first_name %>
+                                        </span>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    <% end %>
+</div>
